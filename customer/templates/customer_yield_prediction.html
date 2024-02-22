@@ -1,0 +1,175 @@
+{% extends 'customer_base_page.html' %}
+{% load static %}
+
+
+{% block nav_bar %}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_home' %}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_crop_prediction' %}">
+          <i class="bi bi-menu-button-wide"></i>
+          <span>Find your crop</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'customer_yield_prediction' %}">
+          <i class="bi bi-journal-text"></i>
+          <span>Yield!</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_home' %}">
+          <i class="bi bi-layout-text-window-reverse"></i>
+          <span>How is today?</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_home' %}">
+          <i class="bi bi-bar-chart"></i>
+          <span>Better fertilizer!</span>
+        </a>
+      </li>
+
+{% endblock %}
+
+
+{% block content %}
+<main id="main" class="main">
+
+{#    <div class="pagetitle">#}
+{#      <h1>Dashboard</h1>#}
+{#      <nav>#}
+{#        <ol class="breadcrumb">#}
+{#          <li class="breadcrumb-item"><a href="index.html">Home</a></li>#}
+{#          <li class="breadcrumb-item active">Dashboard</li>#}
+{#        </ol>#}
+{#      </nav>#}
+{#    </div><!-- End Page Title -->#}
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-11 col-md-3" style="padding-left: 5%">
+              <div class="card" >
+
+
+            <div class="card-body">
+              <div>
+                  <br>
+                  <h2 style="color: darkblue"><b>Calculate the Yield</b></h2>
+                  <h6 style="color: darkblue">Enter the values</h6>
+                  <br>
+              </div>
+
+              <div>
+<form method="post">
+                    {% csrf_token %}
+                      {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+
+
+                <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Nitrogen(N)</label>
+                  <div class="col-sm-2">
+                    <input type="number"  name="n" class="form-control"  required>
+                  </div>
+
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Phosphorous(P)</label>
+                  <div class="col-sm-2">
+                    <input type="number" name="p" class="form-control" required>
+                  </div>
+
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Pottasium(K)</label>
+                  <div class="col-sm-2">
+                    <input type="number" name="k" class="form-control" required>
+                  </div>
+
+
+                </div>
+
+                  <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Rainfall</label>
+                  <div class="col-sm-10">
+                    <input type="number" name="rainfall" class="form-control" required>
+                  </div>
+                </div>
+
+
+                  <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Temperature</label>
+                  <div class="col-sm-10">
+                    <input type="number" name="temperature" class="form-control" required>
+                  </div>
+                </div>
+
+                  <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">Humidity</label>
+                  <div class="col-sm-10">
+                    <input type="number" name="humidity" class="form-control" required>
+                  </div>
+                </div>
+
+                  <div class="row mb-3">
+                  <label for="inputNumber" class="col-sm-2 col-form-label">PH</label>
+                  <div class="col-sm-10">
+                    <input type="number" name="ph" class="form-control" required>
+                  </div>
+                </div>
+
+                </div>
+
+              </div>
+
+                <div class="modal-footer">
+
+                      <a href=""><button type="submit" class="btn btn-success" style="height: 40%;">Calculate</button></a>
+                </div>
+</form>
+
+
+            </div>
+          </div>
+            </div><!-- End Sales Card -->
+
+
+
+
+
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+    <br>
+    <br>
+
+{% endblock %}

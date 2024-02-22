@@ -1,0 +1,81 @@
+{% extends 'home_page_base.html' %}
+{% load static %}
+
+{% block header %}
+<header id="header" class="fixed-top header-transparent" />
+{% endblock %}
+
+{% block content_home %}
+    <section id="hero">
+    <div class="hero-container" data-aos="fade-up">
+
+    <div class="col-lg-3 mb-4 mb-lg-0">
+          <div class="card" style="box-shadow: white">
+            <div class="card-body py-5 px-md-5">
+              <form method="post">
+                  {% csrf_token %}
+
+                    {% for message in messages %}
+                        <div class="alert  alert-success">
+                            <a class="close" href="#" data-dismiss="alert">×</a>
+                             {{ message }}
+                        </div>
+
+                    {% endfor %}
+
+
+
+
+                <!-- Email input -->
+                <div style="text-align: left"  class="form-outline mb-4">
+{#                  <label style="text-align: left"  class="form-label" for="form3Example3">Email address</label>#}
+                  <input type="email" name="username" id="form3Example3" class="form-control" placeholder="Email Address"  />
+
+                </div>
+
+
+
+                <!-- Password input -->
+                <div style="text-align: left" class="form-outline mb-4">
+{#                  <label style="color: black" class="form-label" for="form3Example4">Password</label>#}
+                  <input type="password" name="password" id="form3Example4" class="form-control" placeholder="Password"/>
+
+                </div>
+
+
+
+                <!-- Submit button -->
+              <br>
+              <style>
+                  .block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #04AA6D;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+              </style>
+
+                <button type="submit" class="btn btn-success block">
+                  Sign in
+                </button>
+
+              <div style="color: black" class="text-center">
+                    <p>Not a member? <a href="#">Register</a></p>
+              </div>
+
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </section><!-- End Hero -->
+
+
+
+{% endblock %}

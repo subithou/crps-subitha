@@ -1,0 +1,169 @@
+{% extends 'customer_base_page.html' %}
+{% load static %}
+
+{% block nav_bar %}
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_home' %}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_crop_prediction' %}">
+          <i class="bi bi-menu-button-wide"></i>
+          <span>Find your crop</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+{#      <li class="nav-item">#}
+{#        <a class="nav-link collapsed" href="{% url 'customer_yield_prediction' %}">#}
+{#          <i class="bi bi-journal-text"></i>#}
+{#          <span>Yield!</span>#}
+{#        </a>#}
+{#      </li><!-- End Dashboard Nav -->#}
+
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'customer_weather' %}">
+          <i class="bi bi-layout-text-window-reverse"></i>
+          <span>Weather forecast</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_fertilizer_suggestion' %}">
+          <i class="bi bi-bar-chart"></i>
+          <span>Better fertilizer!</span>
+        </a>
+      </li>
+
+{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+
+    <div class="title"  style="color: darkblue">
+      <h1>Weather Forecast</h1>
+
+    </div><!-- End Page Title -->
+    <br>
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-12 col-md-3">
+              <div class="card" style="border-radius: 20px">
+
+
+            <div class="card-body">
+
+              <div>
+                  <br>
+                  <h2 style="color: darkblue"><b></b></h2>
+                  <br>
+              </div>
+
+              <form method="post">
+                  {% csrf_token %}
+
+                    {% for message in messages %}
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    {% endfor %}
+
+                  <div>
+                      <div class="row mb-3">
+                        <label for="inputNumber" class="col-sm-2 col-form-label">
+                            <h4><b>Place</b></h4>
+                        </label>
+
+                        <div class="col-sm-10">
+
+                                <input type="text" name="city" value="{{ context.city }}" class="form-control" required placeholder="Enter the city">
+
+                        </div>
+                      </div>
+
+              </div>
+              <div class="modal-footer">
+                    <button type="submit" class="btn btn-success" style="height: 30%;">Submit</button>
+              </div>
+
+              </form>
+            </div>
+          </div>
+            </div><!-- End Sales Card -->
+
+
+
+{% for data in context.data %}
+              <div class="col-xxl-4 col-md-3">
+                  <div class=""  style="background: transparent;">
+            <div class="card-body">
+                <div class="card" style="color: #4B515D; border-radius: 35px;">
+          <div class="card-body p-4">
+
+            <div class="d-flex">
+              <h6 class="flex-grow-1">{{ data.date }}</h6>
+
+              <h6> {{ data.time}}</h6>
+            </div>
+
+            <div class="d-flex flex-column text-center mt-5 mb-4">
+              <h6 class="display-4 mb-0 font-weight-bold" style="color: #1C2331;"> {{ data.temperature }}°C </h6>
+              <span class="small" style="color: #868B94">{{ data.description }}</span>
+            </div>
+
+            <div class="d-flex align-items-center">
+              <div class="flex-grow-1" style="font-size: 1rem;">
+
+                  <div><i class="fa fa-location-arrow" aria-hidden="true" style="color: #868B94;"></i> <span class="ms-1">{{ context.city }} </span>
+                </div>
+                <div><i class="fas fa-wind fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{ data.wind }} km/h
+                  </span></div>
+                <div><i class="fas fa-tint fa-fw" style="color: #868B94;"></i> <span class="ms-1"> {{ data.humidity }}% </span>
+                </div>
+
+              </div>
+              <div>
+                <img src="http://openweathermap.org/img/w/{{ data.icon }}.png"
+                  width="100px">
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+
+            </div>
+              </div>
+          </div>
+
+          {% endfor %}
+
+
+
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+    <br>
+    <br>
+
+{% endblock %}

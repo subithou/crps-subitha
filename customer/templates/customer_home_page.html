@@ -1,0 +1,162 @@
+{% extends 'customer_base_page.html' %}
+{% load static %}
+
+{% block nav_bar %}
+    <li class="nav-item">
+        <a class="nav-link " href="{% url 'customer_home' %}">
+          <i class="bi bi-grid"></i>
+          <span>Dashboard</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_crop_prediction' %}">
+          <i class="bi bi-menu-button-wide"></i>
+          <span>Find your crop</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+{#      <li class="nav-item">#}
+{#        <a class="nav-link collapsed" href="{% url 'customer_yield_prediction' %}">#}
+{#          <i class="bi bi-journal-text"></i>#}
+{#          <span>Yield!</span>#}
+{#        </a>#}
+{#      </li><!-- End Dashboard Nav -->#}
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_weather' %}">
+          <i class="bi bi-layout-text-window-reverse"></i>
+          <span>Weather forecast</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'customer_fertilizer_suggestion' %}">
+          <i class="bi bi-bar-chart"></i>
+          <span>Better fertilizer!</span>
+        </a>
+      </li>
+
+{% endblock %}
+
+{% block content %}
+<main id="main" class="main">
+
+{#    <div class="pagetitle">#}
+{#      <h1>Dashboard</h1>#}
+{#      <nav>#}
+{#        <ol class="breadcrumb">#}
+{#          <li class="breadcrumb-item"><a href="index.html">Home</a></li>#}
+{#          <li class="breadcrumb-item active">Dashboard</li>#}
+{#        </ol>#}
+{#      </nav>#}
+{#    </div><!-- End Page Title -->#}
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <section class="section dashboard">
+      <div class="row">
+
+        <!-- Left side columns -->
+
+          <div class="row">
+
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-3">
+              <div class="card">
+
+
+            <div class="card-body">
+              <div>
+                  <br>
+                  <h2 style="color: darkblue"><b>Find your crop</b></h2>
+                  <br>
+              </div>
+
+              <div>
+
+                  <h5>Our advanced crop prediction models leverage machine learning algorithms and historical data to forecast the growth, health, and potential yield of various crops. By analyzing factors such as soil quality, weather conditions, and historical performance, we can provide valuable insights into the optimal crop selection and expected outcomes for your specific farming conditions</h5>
+              </div>
+
+                <div class="modal-footer">
+
+                      <a href="{% url 'customer_crop_prediction' %}"><button type="submit" class="btn btn-success" style="height: 40%;">Find your Crop</button></a>
+                </div>
+
+            </div>
+          </div>
+            </div><!-- End Sales Card -->
+
+
+
+          <div class="col-xxl-4 col-md-3">
+              <div class="card">
+
+
+            <div class="card-body">
+              <div>
+                  <br>
+                  <h2 style="color: darkblue"><b>Best Fertilizer</b></h2>
+                  <br>
+              </div>
+
+              <div>
+
+                  <h5 style="justify-content: flex-start">Determining the right type and amount of fertilizer can significantly impact crop health and yield. Our fertilizer prediction service employs advanced analytics to assess soil nutrient levels, crop requirements, and environmental factors. By analyzing this information, we can recommend personalized fertilizer strategies that optimize nutrient uptake, minimize waste, and enhance crop productivity, ultimately reducing costs and maximizing yields.</h5>
+              </div>
+
+                <div class="modal-footer">
+
+                      <a href="{% url 'customer_fertilizer_suggestion' %}"><button type="submit" class="btn btn-success" style="height: 40%;">Calculate Yield</button></a>
+                </div>
+
+            </div>
+          </div>
+            </div>
+
+              <div class="col-xxl-4 col-md-3">
+              <div class="card">
+
+
+            <div class="card-body">
+              <div>
+                  <br>
+                  <h2 style="color: darkblue"><b>How is today?</b></h2>
+                  <br>
+              </div>
+
+              <div>
+
+                  <h5>IAccurate weather information is crucial for efficient farming. Our weather forecasting service utilizes state-of-the-art meteorological data and forecasting techniques to deliver real-time and long-term weather predictions tailored to your farm's location. With detailed weather forecasts, you can make timely decisions about irrigation, pest control, planting schedules, and other critical farming operations.</h5>
+              </div>
+
+                <div class="modal-footer">
+
+                      <a href=""><button type="submit" class="btn btn-success" style="height: 40%;">Learn more</button></a>
+                </div>
+
+            </div>
+          </div>
+            </div>
+
+
+
+
+
+          </div>
+        </div><!-- End Left side columns -->
+
+        <!-- Right side columns -->
+
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+    <br>
+    <br>
+
+{% endblock %}
